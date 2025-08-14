@@ -1,0 +1,6 @@
+flask>=2.0
+openai-whisper   # whisper package
+torch            # make sure torch compatible with your GPU/CPU
+pyttsx3
+soundfile        # used by whisper for wav reading
+numpy

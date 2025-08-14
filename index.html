@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <title>LYRA</title>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-[#111418] dark justify-between group/design-root overflow-x-hidden"
+         style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
+      <div>
+        <div class="flex items-center bg-[#111418] p-4 pb-2 justify-between">
+          <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Voice Assistant</h2>
+          <div class="flex w-12 items-center justify-end">
+            <!-- settings icon -->
+          </div>
+        </div>
+
+        <h2 class="text-white tracking-light text-[28px] font-bold leading-tight px-4 text-center pb-3 pt-5">Listening...</h2>
+
+        <div class="flex w-full grow bg-[#111418] @container p-4">
+          <div class="w-full gap-1 overflow-hidden bg-[#111418] @[480px]:gap-2 aspect-[3/2] rounded-xl flex">
+            <div class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-none flex-1"
+                 style='background-image: url("https://lh3.googleusercontent.com/...");'>
+            </div>
+          </div>
+        </div>
+
+        <p id="response-text" class="text-white text-base font-normal leading-normal pb-3 pt-1 px-4 text-center">
+          How can I assist you today?
+        </p>
+
+        <div class="px-4 pb-2 text-center">
+          <label for="lang" class="text-white mr-2">Language:</label>
+          <select id="lang" class="rounded px-2 py-1">
+            {% for code, name in supported_langs.items() %}
+            <option value="{{ code }}">{{ name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-end overflow-hidden px-5 pb-5">
+          <button id="mic-btn"
+            class="flex items-center justify-center rounded-full h-14 bg-[#3d99f5] text-white text-base font-bold px-4 gap-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V232a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"></path>
+            </svg>
+            <span id="mic-label">Start</span>
+          </button>
+        </div>
+        <div class="h-5 bg-[#111418]"></div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
